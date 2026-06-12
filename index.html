@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lintel</title>
+  <meta name="description" content="Independent organisational support for churches, charities and schools." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --parchment: #F4EFE8;
+      --stone: #C8B8A8;
+      --oak: #7A6B5E;
+      --forest: #2C3D2E;
+      --deep: #1E2B1F;
+      --arch-fill: #D4BFB0;
+      --rule: #C8BFB0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--parchment);
+      color: var(--deep);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--forest);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 3rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-wordmark {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--parchment);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(244,239,232,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--parchment); }
+
+    /* ── HERO ── */
+    #home {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 56px);
+      align-items: center;
+      padding: 5rem 3rem 4rem;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-text h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(34px, 3.8vw, 52px);
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--deep);
+      margin-bottom: 1.5rem;
+      max-width: 480px;
+    }
+
+    .hero-text p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--oak);
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--deep);
+      text-decoration: none;
+      border-bottom: 1px solid var(--deep);
+      padding-bottom: 3px;
+      transition: opacity 0.2s;
+    }
+
+    .cta-link:hover { opacity: 0.5; }
+
+    .hero-arch {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    /* ── FULL RULE ── */
+    .full-rule {
+      height: 0.5px;
+      background: var(--rule);
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--stone);
+      font-weight: 500;
+    }
+
+    /* ── PILLARS ── */
+    #work {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 3rem;
+    }
+
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      gap: 2rem;
+    }
+
+    .work-header-left h2 {
+      font-family: 'Lora', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 400;
+      color: var(--deep);
+      margin-top: 0.75rem;
+      max-width: 400px;
+    }
+
+    .work-header-right {
+      max-width: 340px;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--oak);
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 0.5px solid var(--rule);
+    }
+
+    .pillar {
+      background: var(--parchment);
+      padding: 2rem 1.75rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pillar-shape {
+      margin-bottom: 1.5rem;
+    }
+
+    .pillar h3 {
+      font-family: 'Lora', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar-desc {
+      font-size: 13px;
+      line-height: 1.72;
+      color: var(--oak);
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .pillar-services {
+      list-style: none;
+      border-top: 0.5px solid var(--rule);
+      padding-top: 1rem;
+    }
+
+    .pillar-services li {
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      color: var(--oak);
+      padding: 0.35rem 0;
+      border-bottom: 0.5px solid var(--rule);
+    }
+
+    .pillar-services li:last-child { border-bottom: none; }
+
+    .services-note {
+      margin-top: 2.5rem;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--oak);
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--forest);
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-shape {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      opacity: 0.08;
+      z-index: 1;
+    }
+
+    .about-left .section-label { color: rgba(244,239,232,0.4); }
+
+    .about-left h2 {
+      font-family: 'Lora', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 400;
+      color: var(--parchment);
+      margin-top: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .about-left p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(244,239,232,0.7);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-left p strong {
+      color: var(--parchment);
+      font-weight: 500;
+    }
+
+    .about-right blockquote {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.6;
+      color: var(--parchment);
+      border-left: 2px solid var(--stone);
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .about-right p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(244,239,232,0.6);
+    }
+
+    .name-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(244,239,232,0.4);
+      border: 0.5px solid rgba(244,239,232,0.2);
+      padding: 0.4rem 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .contact-left .section-label { margin-bottom: 0.75rem; display: block; }
+
+    .contact-left h2 {
+      font-family: 'Lora', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 400;
+      color: var(--deep);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-left p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--oak);
+      margin-bottom: 2rem;
+      max-width: 380px;
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-family: 'Lora', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--deep);
+      text-decoration: none;
+      border-bottom: 1px solid var(--stone);
+      padding-bottom: 4px;
+      transition: border-color 0.2s;
+    }
+
+    .contact-email:hover { border-color: var(--deep); }
+
+    .contact-shape {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--forest);
+      border-top: 0.5px solid rgba(244,239,232,0.1);
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 11px;
+      color: rgba(244,239,232,0.35);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+
+      #home {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.5rem;
+        min-height: auto;
+        gap: 2.5rem;
+      }
+
+      .hero-arch { display: none; }
+
+      #work { padding: 3.5rem 1.5rem; }
+
+      .work-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .work-header-right { text-align: left; }
+
+      .pillars { grid-template-columns: 1fr; }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem;
+        gap: 2.5rem;
+      }
+
+      #contact {
+        grid-template-columns: 1fr;
+        padding: 4rem 1.5rem;
+        gap: 2rem;
+      }
+
+      .contact-shape { display: none; }
+
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.4rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-in { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-logo">
+      <svg width="18" height="26" viewBox="0 0 60 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="60" height="14" fill="#F4EFE8"/>
+        <rect x="0" y="14" width="9" height="74" fill="#F4EFE8"/>
+        <rect x="51" y="14" width="9" height="74" fill="#F4EFE8"/>
+      </svg>
+      <span class="nav-wordmark">lintel</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-text fade-in">
+      <h1>Helping organisations work better from the inside out.</h1>
+      <p>Churches and charities rarely get the quality of organisational support that other sectors take for granted. Lintel works with churches, faith-based charities, and schools on the questions that matter most — leadership, teams, and governance.</p>
+      <a href="#contact" class="cta-link">Get in touch</a>
+    </div>
+    <div class="hero-arch fade-in" style="transition-delay: 0.15s;">
+      <svg width="260" height="340" viewBox="0 0 260 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 340V130C20 72.010 66.010 26 130 26C193.990 26 240 72.010 240 130V340" fill="#D4BFB0"/>
+      </svg>
+    </div>
+  </section>
+
+  <div class="full-rule"></div>
+
+  <!-- WORK / PILLARS -->
+  <section id="work">
+    <div class="work-header fade-in">
+      <div class="work-header-left">
+        <span class="section-label">What we do</span>
+        <h2>Three areas of work.</h2>
+      </div>
+    </div>
+
+    <div class="pillars">
+
+      <!-- Pillar 1: arch outline shape -->
+      <div class="pillar fade-in">
+        <div class="pillar-shape">
+          <svg width="40" height="50" viewBox="0 0 44 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 54V22C2 10.954 10.954 2 22 2C33.046 2 42 10.954 42 22V54" stroke="#D4BFB0" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h3>Leading Well</h3>
+        <p class="pillar-desc">Diagnostic tools for leaders who want an honest external perspective — on themselves, their culture, and how decisions actually get made.</p>
+        <ul class="pillar-services">
+          <li>360 Feedback Process</li>
+          <li>Culture Audit</li>
+          <li>Decision-Making Audit</li>
+          <li>Leadership Pipeline Review</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 2: rectangle shape -->
+      <div class="pillar fade-in" style="transition-delay: 0.1s;">
+        <div class="pillar-shape">
+          <svg width="40" height="50" viewBox="0 0 40 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="20,2 38,20 20,48 2,20" stroke="#D4BFB0" stroke-width="1.5" fill="none"/>
+          </svg>
+        </div>
+        <h3>Team Health</h3>
+        <p class="pillar-desc">How is the team actually functioning? Work with staff teams on role clarity, dynamics, and the processes that hold a team together.</p>
+        <ul class="pillar-services">
+          <li>Team MOT</li>
+          <li>Role Clarity Audit</li>
+          <li>Appraisal &amp; Review Process Design</li>
+        </ul>
+      </div>
+
+      <!-- Pillar 3: lintel beam/oversight shape -->
+      <div class="pillar fade-in" style="transition-delay: 0.2s;">
+        <div class="pillar-shape">
+          <svg width="40" height="50" viewBox="0 0 40 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="36" height="46" stroke="#D4BFB0" stroke-width="1.5" fill="none"/>
+            <line x1="2" y1="16" x2="38" y2="16" stroke="#D4BFB0" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Governance &amp; Structure</h3>
+        <p class="pillar-desc">Clarity on roles, responsibilities, and whether your organisation is set up to do what it's trying to do.</p>
+        <ul class="pillar-services">
+          <li>Governance Health Check</li>
+          <li>Staffing Structure Review</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p class="services-note fade-in">All engagements are scoped individually. If you're not sure whether what you're facing fits any of these, get in touch — a conversation costs nothing.</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <svg class="about-shape" width="500" height="600" viewBox="0 0 500 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 600V220C30 98.497 128.497 0 250 0C371.503 0 470 98.497 470 220V600" fill="#F4EFE8"/>
+    </svg>
+    <div class="about-inner">
+      <div class="about-left fade-in">
+        <span class="section-label">About</span>
+        <h2>Both worlds, one practice.</h2>
+        <p>I'm <strong>Jon Carter</strong>. I am a church leader, church planter, charity trustee, and school governor. I've also spent years building a career in leadership, people, and HR consulting with one of the world's leading professional services firms. The two have always informed each other — and that's precisely what this work draws on.</p>
+      </div>
+      <div class="about-right fade-in" style="transition-delay: 0.15s;">
+        <p>Most consultants working in this space come from one direction or the other. They either have the organisational expertise but don't understand churches, charities, and schools, or they understand those organisations but are working mostly from instinct. Lintel draws on both.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-left fade-in">
+      <span class="section-label">Contact</span>
+      <h2>Let's talk.</h2>
+      <p>Get in touch. A conversation is always the place to start.</p>
+      <a href="mailto:jon@lintel.consulting" class="contact-email">jon@lintel.consulting</a>
+    </div>
+    <div class="contact-shape fade-in" style="transition-delay: 0.15s;">
+      <svg width="200" height="280" viewBox="0 0 60 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="60" height="14" fill="#D4BFB0"/>
+        <rect x="0" y="14" width="9" height="74" fill="#D4BFB0"/>
+        <rect x="51" y="14" width="9" height="74" fill="#D4BFB0"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Lintel</p>
+    <p>lintel.consulting</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    const heroItems = document.querySelectorAll('#home .fade-in');
+    heroItems.forEach(el => {
+      setTimeout(() => el.classList.add('visible'), 100);
+    });
+  </script>
+
+</body>
+</html>
