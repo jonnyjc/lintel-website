@@ -204,11 +204,11 @@
     }
 
     .pillar-desc {
-      font-size: 13px;
+      font-size: 14px;
       line-height: 1.72;
       color: var(--oak);
       margin-bottom: 1.5rem;
-      flex: 1;
+      min-height: 100px;
     }
 
     .pillar-services {
@@ -218,7 +218,7 @@
     }
 
     .pillar-services li {
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 0.03em;
       color: var(--oak);
       padding: 0.35rem 0;
@@ -248,11 +248,16 @@
       margin: 0 auto;
       padding: 0 3rem;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
+      grid-template-columns: 1fr 280px 1fr;
+      gap: 3rem;
+      align-items: center;
       position: relative;
       z-index: 2;
+    }
+
+    .about-photo {
+      height: 360px;
+      overflow: hidden;
     }
 
     .about-shape {
@@ -298,7 +303,7 @@
     }
 
     .about-right p {
-      font-size: 14px;
+      font-size: 15px;
       line-height: 1.8;
       color: rgba(244,239,232,0.6);
     }
@@ -422,6 +427,8 @@
         gap: 2.5rem;
       }
 
+      .about-photo { height: 260px; }
+
       #contact {
         grid-template-columns: 1fr;
         padding: 4rem 1.5rem;
@@ -462,12 +469,14 @@
   <section id="home">
     <div class="hero-text fade-in">
       <h1>Helping organisations work better from the inside out.</h1>
-      <p>Churches and charities rarely get the quality of organisational support that other sectors take for granted. Lintel works with churches, faith-based charities, and schools on the questions that matter most — leadership, teams, and governance.</p>
+      <p>Churches and charities rarely get the quality of organisational support that other sectors take for granted. Lintel works with churches, faith-based charities, and schools on the questions that matter most — leadership, teams, and governance. When organisations reach a threshold, good support holds the frame.</p>
       <a href="#contact" class="cta-link">Get in touch</a>
     </div>
-    <div class="hero-arch fade-in" style="transition-delay: 0.15s;">
-      <svg width="260" height="340" viewBox="0 0 260 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 340V130C20 72.010 66.010 26 130 26C193.990 26 240 72.010 240 130V340" fill="#D4BFB0"/>
+    <div class="hero-arch fade-in" style="transition-delay: 0.15s; display:flex; justify-content:center; align-items:center;">
+      <svg width="260" height="320" viewBox="0 0 60 88" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.12;">
+        <rect x="0" y="0" width="60" height="14" fill="#2C3D2E"/>
+        <rect x="0" y="14" width="9" height="74" fill="#2C3D2E"/>
+        <rect x="51" y="14" width="9" height="74" fill="#2C3D2E"/>
       </svg>
     </div>
   </section>
@@ -549,6 +558,17 @@
         <span class="section-label">About</span>
         <h2>Both worlds, one practice.</h2>
         <p>I'm <strong>Jon Carter</strong>. I am a church leader, church planter, charity trustee, and school governor. I've also spent years building a career in leadership, people, and HR consulting with one of the world's leading professional services firms. The two have always informed each other — and that's precisely what this work draws on.</p>
+      </div>
+      <div class="about-photo fade-in" style="transition-delay: 0.1s; display:flex; justify-content:center; align-items:flex-end;">
+        <svg width="260" height="340" viewBox="0 0 260 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="about-arch-clip">
+              <path d="M20 340V130C20 72.010 66.010 26 130 26C193.990 26 240 72.010 240 130V340Z"/>
+            </clipPath>
+          </defs>
+          <image href="jon-carter.jpg" x="20" y="26" width="220" height="314" clip-path="url(#about-arch-clip)" preserveAspectRatio="xMidYMin slice"/>
+          <path d="M20 340V130C20 72.010 66.010 26 130 26C193.990 26 240 72.010 240 130V340" fill="none" stroke="#C8BFB0" stroke-width="1"/>
+        </svg>
       </div>
       <div class="about-right fade-in" style="transition-delay: 0.15s;">
         <p>Most consultants working in this space come from one direction or the other. They either have the organisational expertise but don't understand churches, charities, and schools, or they understand those organisations but are working mostly from instinct. Lintel draws on both.</p>
